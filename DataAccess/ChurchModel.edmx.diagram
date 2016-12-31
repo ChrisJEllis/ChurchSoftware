@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="68a114a6dcf041ae89d3131d67bc0752" Name="Diagram1">
+        <EntityTypeShape EntityType="ChurchModel.address" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.agegroup" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.attendance" Width="1.5" PointX="9.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.biblestudy" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.biblestudyevent" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.city" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.interest" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.maritalstatu" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.ministry" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.ministryevent" Width="1.5" PointX="7.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.person" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.staff" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.state" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.visitorinterest" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChurchModel.visitorinterview" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="ChurchModel.FK1_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK1_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK5_VisitorInterview" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK1_Attendance" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK2_Attendance" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK3_BibleStudyEvent" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK1_BibleStudyEvent" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK2_BibleStudyEvent" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK1_City" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK4_VisitorInterview" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK1_VisitorInterests" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK1_VisitorInterview" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK2_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK1_Ministry" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK1_MinistryEvent" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK1_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK3_VisitorInterview" ManuallyRouted="false" />
+        <AssociationConnector Association="ChurchModel.FK2_Address" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ChurchModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="250" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="250" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="Zip5" Type="varchar" MaxLength="5" />
+          <Property Name="Zip4" Type="varchar" MaxLength="4" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="agegroup">
+          <Key>
+            <PropertyRef Name="AgeGroupId" />
+          </Key>
+          <Property Name="AgeGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgeGroupCode" Type="varchar" MaxLength="50" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="attendance">
+          <Key>
+            <PropertyRef Name="AttendanceId" />
+          </Key>
+          <Property Name="AttendanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="MinistryEventId" Type="int" />
+          <Property Name="AttendanceDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="biblestudy">
+          <Key>
+            <PropertyRef Name="BibleStudyId" />
+          </Key>
+          <Property Name="BibleStudyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BibleStudyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="biblestudyevent">
+          <Key>
+            <PropertyRef Name="BibleStudyEventId" />
+          </Key>
+          <Property Name="BibleStudyEventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeacherId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="BibleStudyId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Precision="0" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="interest">
+          <Key>
+            <PropertyRef Name="InterestId" />
+          </Key>
+          <Property Name="InterestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InterestCode" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="maritalstatus">
+          <Key>
+            <PropertyRef Name="MaritalStatusId" />
+          </Key>
+          <Property Name="MaritalStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaritalStatusCode" Type="varchar" MaxLength="30" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ministry">
+          <Key>
+            <PropertyRef Name="MinistryId" />
+          </Key>
+          <Property Name="MinistryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinistryName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MinistryLeaderId" Type="int" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ministryevent">
+          <Key>
+            <PropertyRef Name="MinistryEventId" />
+          </Key>
+          <Property Name="MinistryEventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinistryId" Type="int" Nullable="false" />
+          <Property Name="EventDate" Type="datetime" Precision="0" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Middle_Initial" Type="varchar" MaxLength="1" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="1" />
+          <Property Name="AddressId" Type="int" />
+          <Property Name="Holy_Ghost" Type="datetime" Precision="0" />
+          <Property Name="Baptized" Type="datetime" Precision="0" />
+          <Property Name="ChurchMember" Type="tinyint" />
+          <Property Name="MaritalStatusId" Type="int" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="state">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="visitorinterests">
+          <Key>
+            <PropertyRef Name="VisitorInterestsId" />
+          </Key>
+          <Property Name="VisitorInterestsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InterestId" Type="int" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="visitorinterview">
+          <Key>
+            <PropertyRef Name="VisitorInterviewId" />
+          </Key>
+          <Property Name="VisitorInterviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="InterestedInBibleStudy" Type="bool" />
+          <Property Name="VisitationDate" Type="datetime" Precision="0" />
+          <Property Name="StreetAddress" Type="varchar" MaxLength="250" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="Zip" Type="varchar" MaxLength="9" />
+          <Property Name="PreferredMethodOfContact_Phone" Type="bool" />
+          <Property Name="PreferredMethodOfContact_Mail" Type="bool" />
+          <Property Name="PreferredMethodOfContact_Email" Type="bool" />
+          <Property Name="BestTimeToCall" Type="time" Precision="0" />
+          <Property Name="FirstTimeGuest" Type="bool" />
+          <Property Name="SecondTimeGuest" Type="bool" />
+          <Property Name="ThirdTimeGuest" Type="bool" />
+          <Property Name="AgeGroupId" Type="int" />
+          <Property Name="MaritalStatusId" Type="int" />
+          <Property Name="VisitorInterestsId" Type="int" />
+          <Property Name="LastModified" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK1_Address">
+          <End Role="city" Type="Self.city" Multiplicity="0..1" />
+          <End Role="address" Type="Self.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Attendance">
+          <End Role="ministryevent" Type="Self.ministryevent" Multiplicity="0..1" />
+          <End Role="attendance" Type="Self.attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ministryevent">
+              <PropertyRef Name="MinistryEventId" />
+            </Principal>
+            <Dependent Role="attendance">
+              <PropertyRef Name="MinistryEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_BibleStudyEvent">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="biblestudyevent" Type="Self.biblestudyevent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="biblestudyevent">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_City">
+          <End Role="state" Type="Self.state" Multiplicity="0..1" />
+          <End Role="city" Type="Self.city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Ministry">
+          <End Role="person" Type="Self.person" Multiplicity="0..1" />
+          <End Role="ministry" Type="Self.ministry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="ministry">
+              <PropertyRef Name="MinistryLeaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_MinistryEvent">
+          <End Role="ministry" Type="Self.ministry" Multiplicity="1" />
+          <End Role="ministryevent" Type="Self.ministryevent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ministry">
+              <PropertyRef Name="MinistryId" />
+            </Principal>
+            <Dependent Role="ministryevent">
+              <PropertyRef Name="MinistryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Person">
+          <End Role="address" Type="Self.address" Multiplicity="0..1" />
+          <End Role="person" Type="Self.person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="person">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Staff">
+          <End Role="person" Type="Self.person" Multiplicity="0..1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_VisitorInterests">
+          <End Role="interest" Type="Self.interest" Multiplicity="0..1" />
+          <End Role="visitorinterests" Type="Self.visitorinterests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="interest">
+              <PropertyRef Name="InterestId" />
+            </Principal>
+            <Dependent Role="visitorinterests">
+              <PropertyRef Name="InterestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_VisitorInterview">
+          <End Role="maritalstatus" Type="Self.maritalstatus" Multiplicity="0..1" />
+          <End Role="visitorinterview" Type="Self.visitorinterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maritalstatus">
+              <PropertyRef Name="MaritalStatusId" />
+            </Principal>
+            <Dependent Role="visitorinterview">
+              <PropertyRef Name="MaritalStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_Address">
+          <End Role="state" Type="Self.state" Multiplicity="0..1" />
+          <End Role="address" Type="Self.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_Attendance">
+          <End Role="person" Type="Self.person" Multiplicity="0..1" />
+          <End Role="attendance" Type="Self.attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="attendance">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_BibleStudyEvent">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="biblestudyevent" Type="Self.biblestudyevent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="biblestudyevent">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_Person">
+          <End Role="maritalstatus" Type="Self.maritalstatus" Multiplicity="0..1" />
+          <End Role="person" Type="Self.person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maritalstatus">
+              <PropertyRef Name="MaritalStatusId" />
+            </Principal>
+            <Dependent Role="person">
+              <PropertyRef Name="MaritalStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK3_BibleStudyEvent">
+          <End Role="biblestudy" Type="Self.biblestudy" Multiplicity="1" />
+          <End Role="biblestudyevent" Type="Self.biblestudyevent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="biblestudy">
+              <PropertyRef Name="BibleStudyId" />
+            </Principal>
+            <Dependent Role="biblestudyevent">
+              <PropertyRef Name="BibleStudyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK3_VisitorInterview">
+          <End Role="person" Type="Self.person" Multiplicity="0..1" />
+          <End Role="visitorinterview" Type="Self.visitorinterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="visitorinterview">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK4_VisitorInterview">
+          <End Role="city" Type="Self.city" Multiplicity="0..1" />
+          <End Role="visitorinterview" Type="Self.visitorinterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="visitorinterview">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK5_VisitorInterview">
+          <End Role="agegroup" Type="Self.agegroup" Multiplicity="0..1" />
+          <End Role="visitorinterview" Type="Self.visitorinterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agegroup">
+              <PropertyRef Name="AgeGroupId" />
+            </Principal>
+            <Dependent Role="visitorinterview">
+              <PropertyRef Name="AgeGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChurchModelStoreContainer">
+          <EntitySet Name="address" EntityType="Self.address" Schema="church" store:Type="Tables" />
+          <EntitySet Name="agegroup" EntityType="Self.agegroup" Schema="church" store:Type="Tables" />
+          <EntitySet Name="attendance" EntityType="Self.attendance" Schema="church" store:Type="Tables" />
+          <EntitySet Name="biblestudy" EntityType="Self.biblestudy" Schema="church" store:Type="Tables" />
+          <EntitySet Name="biblestudyevent" EntityType="Self.biblestudyevent" Schema="church" store:Type="Tables" />
+          <EntitySet Name="city" EntityType="Self.city" Schema="church" store:Type="Tables" />
+          <EntitySet Name="interest" EntityType="Self.interest" Schema="church" store:Type="Tables" />
+          <EntitySet Name="maritalstatus" EntityType="Self.maritalstatus" Schema="church" store:Type="Tables" />
+          <EntitySet Name="ministry" EntityType="Self.ministry" Schema="church" store:Type="Tables" />
+          <EntitySet Name="ministryevent" EntityType="Self.ministryevent" Schema="church" store:Type="Tables" />
+          <EntitySet Name="person" EntityType="Self.person" Schema="church" store:Type="Tables" />
+          <EntitySet Name="staff" EntityType="Self.staff" Schema="church" store:Type="Tables" />
+          <EntitySet Name="state" EntityType="Self.state" Schema="church" store:Type="Tables" />
+          <EntitySet Name="visitorinterests" EntityType="Self.visitorinterests" Schema="church" store:Type="Tables" />
+          <EntitySet Name="visitorinterview" EntityType="Self.visitorinterview" Schema="church" store:Type="Tables" />
+          <AssociationSet Name="FK1_Address" Association="Self.FK1_Address">
+            <End Role="city" EntitySet="city" />
+            <End Role="address" EntitySet="address" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Attendance" Association="Self.FK1_Attendance">
+            <End Role="ministryevent" EntitySet="ministryevent" />
+            <End Role="attendance" EntitySet="attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_BibleStudyEvent" Association="Self.FK1_BibleStudyEvent">
+            <End Role="person" EntitySet="person" />
+            <End Role="biblestudyevent" EntitySet="biblestudyevent" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_City" Association="Self.FK1_City">
+            <End Role="state" EntitySet="state" />
+            <End Role="city" EntitySet="city" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Ministry" Association="Self.FK1_Ministry">
+            <End Role="person" EntitySet="person" />
+            <End Role="ministry" EntitySet="ministry" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_MinistryEvent" Association="Self.FK1_MinistryEvent">
+            <End Role="ministry" EntitySet="ministry" />
+            <End Role="ministryevent" EntitySet="ministryevent" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Person" Association="Self.FK1_Person">
+            <End Role="address" EntitySet="address" />
+            <End Role="person" EntitySet="person" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Staff" Association="Self.FK1_Staff">
+            <End Role="person" EntitySet="person" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_VisitorInterests" Association="Self.FK1_VisitorInterests">
+            <End Role="interest" EntitySet="interest" />
+            <End Role="visitorinterests" EntitySet="visitorinterests" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_VisitorInterview" Association="Self.FK1_VisitorInterview">
+            <End Role="maritalstatus" EntitySet="maritalstatus" />
+            <End Role="visitorinterview" EntitySet="visitorinterview" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_Address" Association="Self.FK2_Address">
+            <End Role="state" EntitySet="state" />
+            <End Role="address" EntitySet="address" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_Attendance" Association="Self.FK2_Attendance">
+            <End Role="person" EntitySet="person" />
+            <End Role="attendance" EntitySet="attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_BibleStudyEvent" Association="Self.FK2_BibleStudyEvent">
+            <End Role="person" EntitySet="person" />
+            <End Role="biblestudyevent" EntitySet="biblestudyevent" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_Person" Association="Self.FK2_Person">
+            <End Role="maritalstatus" EntitySet="maritalstatus" />
+            <End Role="person" EntitySet="person" />
+          </AssociationSet>
+          <AssociationSet Name="FK3_BibleStudyEvent" Association="Self.FK3_BibleStudyEvent">
+            <End Role="biblestudy" EntitySet="biblestudy" />
+            <End Role="biblestudyevent" EntitySet="biblestudyevent" />
+          </AssociationSet>
+          <AssociationSet Name="FK3_VisitorInterview" Association="Self.FK3_VisitorInterview">
+            <End Role="person" EntitySet="person" />
+            <End Role="visitorinterview" EntitySet="visitorinterview" />
+          </AssociationSet>
+          <AssociationSet Name="FK4_VisitorInterview" Association="Self.FK4_VisitorInterview">
+            <End Role="city" EntitySet="city" />
+            <End Role="visitorinterview" EntitySet="visitorinterview" />
+          </AssociationSet>
+          <AssociationSet Name="FK5_VisitorInterview" Association="Self.FK5_VisitorInterview">
+            <End Role="agegroup" EntitySet="agegroup" />
+            <End Role="visitorinterview" EntitySet="visitorinterview" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ChurchModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="Zip5" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="city" Relationship="Self.FK1_Address" FromRole="address" ToRole="city" />
+          <NavigationProperty Name="people" Relationship="Self.FK1_Person" FromRole="address" ToRole="person" />
+          <Property Name="AddressLine1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <NavigationProperty Name="state" Relationship="ChurchModel.FK2_Address" FromRole="address" ToRole="state" />
+        </EntityType>
+        <EntityType Name="agegroup">
+          <Key>
+            <PropertyRef Name="AgeGroupId" />
+          </Key>
+          <Property Name="AgeGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgeGroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="visitorinterviews" Relationship="Self.FK5_VisitorInterview" FromRole="agegroup" ToRole="visitorinterview" />
+        </EntityType>
+        <EntityType Name="attendance">
+          <Key>
+            <PropertyRef Name="AttendanceId" />
+          </Key>
+          <Property Name="AttendanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="MinistryEventId" Type="Int32" />
+          <Property Name="AttendanceDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ministryevent" Relationship="Self.FK1_Attendance" FromRole="attendance" ToRole="ministryevent" />
+          <NavigationProperty Name="person" Relationship="Self.FK2_Attendance" FromRole="attendance" ToRole="person" />
+        </EntityType>
+        <EntityType Name="biblestudy">
+          <Key>
+            <PropertyRef Name="BibleStudyId" />
+          </Key>
+          <Property Name="BibleStudyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BibleStudyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="biblestudyevents" Relationship="Self.FK3_BibleStudyEvent" FromRole="biblestudy" ToRole="biblestudyevent" />
+        </EntityType>
+        <EntityType Name="biblestudyevent">
+          <Key>
+            <PropertyRef Name="BibleStudyEventId" />
+          </Key>
+          <Property Name="BibleStudyEventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="BibleStudyId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="biblestudy" Relationship="Self.FK3_BibleStudyEvent" FromRole="biblestudyevent" ToRole="biblestudy" />
+          <NavigationProperty Name="person" Relationship="Self.FK1_BibleStudyEvent" FromRole="biblestudyevent" ToRole="person" />
+          <NavigationProperty Name="person1" Relationship="Self.FK2_BibleStudyEvent" FromRole="biblestudyevent" ToRole="person" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="addresses" Relationship="Self.FK1_Address" FromRole="city" ToRole="address" />
+          <NavigationProperty Name="state" Relationship="Self.FK1_City" FromRole="city" ToRole="state" />
+          <NavigationProperty Name="visitorinterviews" Relationship="Self.FK4_VisitorInterview" FromRole="city" ToRole="visitorinterview" />
+        </EntityType>
+        <EntityType Name="interest">
+          <Key>
+            <PropertyRef Name="InterestId" />
+          </Key>
+          <Property Name="InterestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InterestCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="visitorinterests" Relationship="Self.FK1_VisitorInterests" FromRole="interest" ToRole="visitorinterests" />
+        </EntityType>
+        <EntityType Name="maritalstatu">
+          <Key>
+            <PropertyRef Name="MaritalStatusId" />
+          </Key>
+          <Property Name="MaritalStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaritalStatusCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="visitorinterviews" Relationship="Self.FK1_VisitorInterview" FromRole="maritalstatus" ToRole="visitorinterview" />
+          <NavigationProperty Name="people" Relationship="Self.FK2_Person" FromRole="maritalstatus" ToRole="person" />
+        </EntityType>
+        <EntityType Name="ministry">
+          <Key>
+            <PropertyRef Name="MinistryId" />
+          </Key>
+          <Property Name="MinistryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MinistryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MinistryLeaderId" Type="Int32" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="person" Relationship="Self.FK1_Ministry" FromRole="ministry" ToRole="person" />
+          <NavigationProperty Name="ministryevents" Relationship="Self.FK1_MinistryEvent" FromRole="ministry" ToRole="ministryevent" />
+        </EntityType>
+        <EntityType Name="ministryevent">
+          <Key>
+            <PropertyRef Name="MinistryEventId" />
+          </Key>
+          <Property Name="MinistryEventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MinistryId" Type="Int32" Nullable="false" />
+          <Property Name="EventDate" Type="DateTime" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="attendances" Relationship="Self.FK1_Attendance" FromRole="ministryevent" ToRole="attendance" />
+          <NavigationProperty Name="ministry" Relationship="Self.FK1_MinistryEvent" FromRole="ministryevent" ToRole="ministry" />
+        </EntityType>
+        <EntityType Name="person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Middle_Initial" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddressId" Type="Int32" />
+          <Property Name="Holy_Ghost" Type="DateTime" />
+          <Property Name="Baptized" Type="DateTime" />
+          <Property Name="ChurchMember" Type="SByte" />
+          <Property Name="MaritalStatusId" Type="Int32" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="address" Relationship="Self.FK1_Person" FromRole="person" ToRole="address" />
+          <NavigationProperty Name="attendances" Relationship="Self.FK2_Attendance" FromRole="person" ToRole="attendance" />
+          <NavigationProperty Name="biblestudyevents" Relationship="Self.FK1_BibleStudyEvent" FromRole="person" ToRole="biblestudyevent" />
+          <NavigationProperty Name="biblestudyevents1" Relationship="Self.FK2_BibleStudyEvent" FromRole="person" ToRole="biblestudyevent" />
+          <NavigationProperty Name="maritalstatu" Relationship="Self.FK2_Person" FromRole="person" ToRole="maritalstatus" />
+          <NavigationProperty Name="ministries" Relationship="Self.FK1_Ministry" FromRole="person" ToRole="ministry" />
+          <NavigationProperty Name="staffs" Relationship="Self.FK1_Staff" FromRole="person" ToRole="staff" />
+          <NavigationProperty Name="visitorinterviews" Relationship="Self.FK3_VisitorInterview" FromRole="person" ToRole="visitorinterview" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="person" Relationship="Self.FK1_Staff" FromRole="staff" ToRole="person" />
+        </EntityType>
+        <EntityType Name="state">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cities" Relationship="Self.FK1_City" FromRole="state" ToRole="city" />
+          <NavigationProperty Name="addresses" Relationship="ChurchModel.FK2_Address" FromRole="state" ToRole="address" />
+        </EntityType>
+        <EntityType Name="visitorinterest">
+          <Key>
+            <PropertyRef Name="VisitorInterestsId" />
+          </Key>
+          <Property Name="VisitorInterestsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InterestId" Type="Int32" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="interest" Relationship="Self.FK1_VisitorInterests" FromRole="visitorinterests" ToRole="interest" />
+        </EntityType>
+        <EntityType Name="visitorinterview">
+          <Key>
+            <PropertyRef Name="VisitorInterviewId" />
+          </Key>
+          <Property Name="VisitorInterviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="InterestedInBibleStudy" Type="Boolean" />
+          <Property Name="VisitationDate" Type="DateTime" />
+          <Property Name="StreetAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="Zip" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="PreferredMethodOfContact_Phone" Type="Boolean" />
+          <Property Name="PreferredMethodOfContact_Mail" Type="Boolean" />
+          <Property Name="PreferredMethodOfContact_Email" Type="Boolean" />
+          <Property Name="BestTimeToCall" Type="Time" />
+          <Property Name="FirstTimeGuest" Type="Boolean" />
+          <Property Name="SecondTimeGuest" Type="Boolean" />
+          <Property Name="ThirdTimeGuest" Type="Boolean" />
+          <Property Name="AgeGroupId" Type="Int32" />
+          <Property Name="MaritalStatusId" Type="Int32" />
+          <Property Name="VisitorInterestsId" Type="Int32" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="agegroup" Relationship="Self.FK5_VisitorInterview" FromRole="visitorinterview" ToRole="agegroup" />
+          <NavigationProperty Name="city" Relationship="Self.FK4_VisitorInterview" FromRole="visitorinterview" ToRole="city" />
+          <NavigationProperty Name="maritalstatu" Relationship="Self.FK1_VisitorInterview" FromRole="visitorinterview" ToRole="maritalstatus" />
+          <NavigationProperty Name="person" Relationship="Self.FK3_VisitorInterview" FromRole="visitorinterview" ToRole="person" />
+        </EntityType>
+        <Association Name="FK1_Address">
+          <End Role="city" Type="Self.city" Multiplicity="0..1" />
+          <End Role="address" Type="Self.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Person">
+          <End Role="address" Type="Self.address" Multiplicity="0..1" />
+          <End Role="person" Type="Self.person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="person">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK5_VisitorInterview">
+          <End Role="agegroup" Type="Self.agegroup" Multiplicity="0..1" />
+          <End Role="visitorinterview" Type="Self.visitorinterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agegroup">
+              <PropertyRef Name="AgeGroupId" />
+            </Principal>
+            <Dependent Role="visitorinterview">
+              <PropertyRef Name="AgeGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Attendance">
+          <End Role="ministryevent" Type="Self.ministryevent" Multiplicity="0..1" />
+          <End Role="attendance" Type="Self.attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ministryevent">
+              <PropertyRef Name="MinistryEventId" />
+            </Principal>
+            <Dependent Role="attendance">
+              <PropertyRef Name="MinistryEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_Attendance">
+          <End Role="person" Type="Self.person" Multiplicity="0..1" />
+          <End Role="attendance" Type="Self.attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="attendance">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK3_BibleStudyEvent">
+          <End Role="biblestudy" Type="Self.biblestudy" Multiplicity="1" />
+          <End Role="biblestudyevent" Type="Self.biblestudyevent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="biblestudy">
+              <PropertyRef Name="BibleStudyId" />
+            </Principal>
+            <Dependent Role="biblestudyevent">
+              <PropertyRef Name="BibleStudyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_BibleStudyEvent">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="biblestudyevent" Type="Self.biblestudyevent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="biblestudyevent">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_BibleStudyEvent">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="biblestudyevent" Type="Self.biblestudyevent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="biblestudyevent">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_City">
+          <End Role="state" Type="Self.state" Multiplicity="0..1" />
+          <End Role="city" Type="Self.city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK4_VisitorInterview">
+          <End Role="city" Type="Self.city" Multiplicity="0..1" />
+          <End Role="visitorinterview" Type="Self.visitorinterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="visitorinterview">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_VisitorInterests">
+          <End Role="interest" Type="Self.interest" Multiplicity="0..1" />
+          <End Role="visitorinterests" Type="Self.visitorinterest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="interest">
+              <PropertyRef Name="InterestId" />
+            </Principal>
+            <Dependent Role="visitorinterests">
+              <PropertyRef Name="InterestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_VisitorInterview">
+          <End Role="maritalstatus" Type="Self.maritalstatu" Multiplicity="0..1" />
+          <End Role="visitorinterview" Type="Self.visitorinterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maritalstatus">
+              <PropertyRef Name="MaritalStatusId" />
+            </Principal>
+            <Dependent Role="visitorinterview">
+              <PropertyRef Name="MaritalStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2_Person">
+          <End Role="maritalstatus" Type="Self.maritalstatu" Multiplicity="0..1" />
+          <End Role="person" Type="Self.person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="maritalstatus">
+              <PropertyRef Name="MaritalStatusId" />
+            </Principal>
+            <Dependent Role="person">
+              <PropertyRef Name="MaritalStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Ministry">
+          <End Role="person" Type="Self.person" Multiplicity="0..1" />
+          <End Role="ministry" Type="Self.ministry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="ministry">
+              <PropertyRef Name="MinistryLeaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_MinistryEvent">
+          <End Role="ministry" Type="Self.ministry" Multiplicity="1" />
+          <End Role="ministryevent" Type="Self.ministryevent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ministry">
+              <PropertyRef Name="MinistryId" />
+            </Principal>
+            <Dependent Role="ministryevent">
+              <PropertyRef Name="MinistryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_Staff">
+          <End Role="person" Type="Self.person" Multiplicity="0..1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK3_VisitorInterview">
+          <End Role="person" Type="Self.person" Multiplicity="0..1" />
+          <End Role="visitorinterview" Type="Self.visitorinterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="visitorinterview">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChurchEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="addresses" EntityType="Self.address" />
+          <EntitySet Name="agegroups" EntityType="Self.agegroup" />
+          <EntitySet Name="attendances" EntityType="Self.attendance" />
+          <EntitySet Name="biblestudies" EntityType="Self.biblestudy" />
+          <EntitySet Name="biblestudyevents" EntityType="Self.biblestudyevent" />
+          <EntitySet Name="cities" EntityType="Self.city" />
+          <EntitySet Name="interests" EntityType="Self.interest" />
+          <EntitySet Name="maritalstatus" EntityType="Self.maritalstatu" />
+          <EntitySet Name="ministries" EntityType="Self.ministry" />
+          <EntitySet Name="ministryevents" EntityType="Self.ministryevent" />
+          <EntitySet Name="people" EntityType="Self.person" />
+          <EntitySet Name="staffs" EntityType="Self.staff" />
+          <EntitySet Name="states" EntityType="Self.state" />
+          <EntitySet Name="visitorinterests" EntityType="Self.visitorinterest" />
+          <EntitySet Name="visitorinterviews" EntityType="Self.visitorinterview" />
+          <AssociationSet Name="FK1_Address" Association="Self.FK1_Address">
+            <End Role="city" EntitySet="cities" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Person" Association="Self.FK1_Person">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="person" EntitySet="people" />
+          </AssociationSet>
+          <AssociationSet Name="FK5_VisitorInterview" Association="Self.FK5_VisitorInterview">
+            <End Role="agegroup" EntitySet="agegroups" />
+            <End Role="visitorinterview" EntitySet="visitorinterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Attendance" Association="Self.FK1_Attendance">
+            <End Role="ministryevent" EntitySet="ministryevents" />
+            <End Role="attendance" EntitySet="attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_Attendance" Association="Self.FK2_Attendance">
+            <End Role="person" EntitySet="people" />
+            <End Role="attendance" EntitySet="attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK3_BibleStudyEvent" Association="Self.FK3_BibleStudyEvent">
+            <End Role="biblestudy" EntitySet="biblestudies" />
+            <End Role="biblestudyevent" EntitySet="biblestudyevents" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_BibleStudyEvent" Association="Self.FK1_BibleStudyEvent">
+            <End Role="person" EntitySet="people" />
+            <End Role="biblestudyevent" EntitySet="biblestudyevents" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_BibleStudyEvent" Association="Self.FK2_BibleStudyEvent">
+            <End Role="person" EntitySet="people" />
+            <End Role="biblestudyevent" EntitySet="biblestudyevents" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_City" Association="Self.FK1_City">
+            <End Role="state" EntitySet="states" />
+            <End Role="city" EntitySet="cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK4_VisitorInterview" Association="Self.FK4_VisitorInterview">
+            <End Role="city" EntitySet="cities" />
+            <End Role="visitorinterview" EntitySet="visitorinterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_VisitorInterests" Association="Self.FK1_VisitorInterests">
+            <End Role="interest" EntitySet="interests" />
+            <End Role="visitorinterests" EntitySet="visitorinterests" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_VisitorInterview" Association="Self.FK1_VisitorInterview">
+            <End Role="maritalstatus" EntitySet="maritalstatus" />
+            <End Role="visitorinterview" EntitySet="visitorinterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_Person" Association="Self.FK2_Person">
+            <End Role="maritalstatus" EntitySet="maritalstatus" />
+            <End Role="person" EntitySet="people" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Ministry" Association="Self.FK1_Ministry">
+            <End Role="person" EntitySet="people" />
+            <End Role="ministry" EntitySet="ministries" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_MinistryEvent" Association="Self.FK1_MinistryEvent">
+            <End Role="ministry" EntitySet="ministries" />
+            <End Role="ministryevent" EntitySet="ministryevents" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_Staff" Association="Self.FK1_Staff">
+            <End Role="person" EntitySet="people" />
+            <End Role="staff" EntitySet="staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK3_VisitorInterview" Association="Self.FK3_VisitorInterview">
+            <End Role="person" EntitySet="people" />
+            <End Role="visitorinterview" EntitySet="visitorinterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK2_Address" Association="ChurchModel.FK2_Address">
+            <End Role="state" EntitySet="states" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK2_Address">
+          <End Type="ChurchModel.state" Role="state" Multiplicity="0..1" />
+          <End Type="ChurchModel.address" Role="address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ChurchModelStoreContainer" CdmEntityContainer="ChurchEntities">
+          <EntitySetMapping Name="addresses">
+            <EntityTypeMapping TypeName="ChurchModel.address">
+              <MappingFragment StoreEntitySet="address">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Zip5" ColumnName="Zip5" />
+                <ScalarProperty Name="Zip4" ColumnName="Zip4" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="agegroups">
+            <EntityTypeMapping TypeName="ChurchModel.agegroup">
+              <MappingFragment StoreEntitySet="agegroup">
+                <ScalarProperty Name="AgeGroupId" ColumnName="AgeGroupId" />
+                <ScalarProperty Name="AgeGroupCode" ColumnName="AgeGroupCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="attendances">
+            <EntityTypeMapping TypeName="ChurchModel.attendance">
+              <MappingFragment StoreEntitySet="attendance">
+                <ScalarProperty Name="AttendanceId" ColumnName="AttendanceId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="MinistryEventId" ColumnName="MinistryEventId" />
+                <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="biblestudies">
+            <EntityTypeMapping TypeName="ChurchModel.biblestudy">
+              <MappingFragment StoreEntitySet="biblestudy">
+                <ScalarProperty Name="BibleStudyId" ColumnName="BibleStudyId" />
+                <ScalarProperty Name="BibleStudyName" ColumnName="BibleStudyName" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="biblestudyevents">
+            <EntityTypeMapping TypeName="ChurchModel.biblestudyevent">
+              <MappingFragment StoreEntitySet="biblestudyevent">
+                <ScalarProperty Name="BibleStudyEventId" ColumnName="BibleStudyEventId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="BibleStudyId" ColumnName="BibleStudyId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="ChurchModel.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="interests">
+            <EntityTypeMapping TypeName="ChurchModel.interest">
+              <MappingFragment StoreEntitySet="interest">
+                <ScalarProperty Name="InterestId" ColumnName="InterestId" />
+                <ScalarProperty Name="InterestCode" ColumnName="InterestCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maritalstatus">
+            <EntityTypeMapping TypeName="ChurchModel.maritalstatu">
+              <MappingFragment StoreEntitySet="maritalstatus">
+                <ScalarProperty Name="MaritalStatusId" ColumnName="MaritalStatusId" />
+                <ScalarProperty Name="MaritalStatusCode" ColumnName="MaritalStatusCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ministries">
+            <EntityTypeMapping TypeName="ChurchModel.ministry">
+              <MappingFragment StoreEntitySet="ministry">
+                <ScalarProperty Name="MinistryId" ColumnName="MinistryId" />
+                <ScalarProperty Name="MinistryName" ColumnName="MinistryName" />
+                <ScalarProperty Name="MinistryLeaderId" ColumnName="MinistryLeaderId" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ministryevents">
+            <EntityTypeMapping TypeName="ChurchModel.ministryevent">
+              <MappingFragment StoreEntitySet="ministryevent">
+                <ScalarProperty Name="MinistryEventId" ColumnName="MinistryEventId" />
+                <ScalarProperty Name="MinistryId" ColumnName="MinistryId" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="people">
+            <EntityTypeMapping TypeName="ChurchModel.person">
+              <MappingFragment StoreEntitySet="person">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Middle_Initial" ColumnName="Middle_Initial" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Holy_Ghost" ColumnName="Holy_Ghost" />
+                <ScalarProperty Name="Baptized" ColumnName="Baptized" />
+                <ScalarProperty Name="ChurchMember" ColumnName="ChurchMember" />
+                <ScalarProperty Name="MaritalStatusId" ColumnName="MaritalStatusId" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staffs">
+            <EntityTypeMapping TypeName="ChurchModel.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="states">
+            <EntityTypeMapping TypeName="ChurchModel.state">
+              <MappingFragment StoreEntitySet="state">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="visitorinterests">
+            <EntityTypeMapping TypeName="ChurchModel.visitorinterest">
+              <MappingFragment StoreEntitySet="visitorinterests">
+                <ScalarProperty Name="VisitorInterestsId" ColumnName="VisitorInterestsId" />
+                <ScalarProperty Name="InterestId" ColumnName="InterestId" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="visitorinterviews">
+            <EntityTypeMapping TypeName="ChurchModel.visitorinterview">
+              <MappingFragment StoreEntitySet="visitorinterview">
+                <ScalarProperty Name="VisitorInterviewId" ColumnName="VisitorInterviewId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="InterestedInBibleStudy" ColumnName="InterestedInBibleStudy" />
+                <ScalarProperty Name="VisitationDate" ColumnName="VisitationDate" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="PreferredMethodOfContact_Phone" ColumnName="PreferredMethodOfContact_Phone" />
+                <ScalarProperty Name="PreferredMethodOfContact_Mail" ColumnName="PreferredMethodOfContact_Mail" />
+                <ScalarProperty Name="PreferredMethodOfContact_Email" ColumnName="PreferredMethodOfContact_Email" />
+                <ScalarProperty Name="BestTimeToCall" ColumnName="BestTimeToCall" />
+                <ScalarProperty Name="FirstTimeGuest" ColumnName="FirstTimeGuest" />
+                <ScalarProperty Name="SecondTimeGuest" ColumnName="SecondTimeGuest" />
+                <ScalarProperty Name="ThirdTimeGuest" ColumnName="ThirdTimeGuest" />
+                <ScalarProperty Name="AgeGroupId" ColumnName="AgeGroupId" />
+                <ScalarProperty Name="MaritalStatusId" ColumnName="MaritalStatusId" />
+                <ScalarProperty Name="VisitorInterestsId" ColumnName="VisitorInterestsId" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
